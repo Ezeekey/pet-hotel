@@ -23,7 +23,7 @@ namespace pet_hotel
         Spotted
     }
     public class Pet {
-        public Guid id { get; set; }
+        public int id { get; set; }
 
         [Required, JsonConverter(typeof(JsonStringEnumConverter))]
         public PetBreedType breed { get; set; }
@@ -35,7 +35,7 @@ namespace pet_hotel
         public string name { get; set; }
 
         [ForeignKey("Owners")]
-        public Guid petOwnerId { get; set; }
+        public int petOwnerId { get; set; }
 
         public PetOwner petOwner { get; set; }
 

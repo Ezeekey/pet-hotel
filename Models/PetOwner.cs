@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace pet_hotel
 {
     public class PetOwner {
-        public Guid id { get; set; }
+        public int id { get; set; }
 
         [Required]
         string name { get; set; }
