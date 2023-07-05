@@ -39,6 +39,6 @@ namespace pet_hotel
 
         public PetOwner petOwner { get; set; }
 
-        public DateTime checkedInAt { get; set; }
+        public DateTime? checkedInAt { get; set; }
     }
 }
