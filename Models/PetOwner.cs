@@ -9,10 +9,10 @@ namespace pet_hotel
         public int id { get; set; }
 
         [Required]
-        string name { get; set; }
+        public string name { get; set; }
 
         [Required]
-        string emailAddress { get; set; }
+        public string emailAddress { get; set; }
 
         [JsonIgnore]
         public ICollection<Pet> pets { get; set; }
@@ -23,5 +23,6 @@ namespace pet_hotel
                 return pets == null ? 0 : pets.Count;
             }
         }
+        // Get fixd
     }
 }

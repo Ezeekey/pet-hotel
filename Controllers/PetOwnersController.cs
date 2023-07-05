@@ -23,6 +23,16 @@ namespace pet_hotel.Controllers
             return new List<PetOwner>();
         }
 
+        [HttpPut("{OwnerId}")]
+        public IActionResult editOwner([FromBody] PetOwner newOwner, int OwnerId){
+            if(OwnerId != newOwner.id) return BadRequest();
+            if(!_context.Owners.Any(owner => owner.id == OwnerId)) return NotFound();
+
+            _context.Owners.Update(newOwner);
+            _context.SaveChanges();
+            return Ok(newOwner);
+        }
+
         [HttpPost]
         public IActionResult createOwner([FromBody] PetOwner newOwner){
             _context.Owners.Add(newOwner);
