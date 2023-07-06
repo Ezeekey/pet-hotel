@@ -37,6 +37,10 @@ namespace pet_hotel.Controllers
             if(OwnerId != newOwner.id) return BadRequest();
             if(!_context.Owners.Any(owner => owner.id == OwnerId)) return NotFound();
 
+            Transaction newTransaction = new Transaction($"Owner with id {OwnerId.ToString()} has been edited with\nvalues" +
+            $"name: {newOwner.name}\nemailAddress: {newOwner.emailAddress}\n");
+
+            _context.Transactions.Add(newTransaction);
             _context.Owners.Update(newOwner);
             _context.SaveChanges();
             return Ok(newOwner);
