@@ -26,28 +26,16 @@ namespace pet_hotel.Controllers
             return new List<Pet>();
         }
 
-        // [HttpGet]
-        // [Route("test")]
-        // public IEnumerable<Pet> GetPets() {
-        //     PetOwner blaine = new PetOwner{
-        //         name = "Blaine"
-        //     };
+        [HttpPost]
+        public IActionResult CreatePet([FromBody] Pet newPet) {
+            Pet theNewNewPet = newPet;
+            theNewNewPet.petOwner = _context.Owners.SingleOrDefault(owner => owner.id == newPet.petOwnerid);
 
-        //     Pet newPet1 = new Pet {
-        //         name = "Big Dog",
-        //         petOwner = blaine,
-        //         color = PetColorType.Black,
-        //         breed = PetBreedType.Poodle,
-        //     };
-
-        //     Pet newPet2 = new Pet {
-        //         name = "Little Dog",
-        //         petOwner = blaine,
-        //         color = PetColorType.Golden,
-        //         breed = PetBreedType.Labrador,
-        //     };
-
-        //     return new List<Pet>{ newPet1, newPet2};
-        // }
+            _context.Pets.Add(theNewNewPet);
+            _context.SaveChanges();
+            Console.WriteLine("uuuuh hi?");
+            Console.WriteLine("Owner object, {0}\n Owner id, {1}", theNewNewPet.petOwner, theNewNewPet.petOwnerid);
+            return Created($"/api/pets/{newPet.id}", theNewNewPet);
+        }
     }
 }

@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace dotnet_bakery.Migrations
 {
-    public partial class Why : Migration
+    public partial class argh : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,9 @@ namespace dotnet_bakery.Migrations
                 columns: table => new
                 {
                     id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    name = table.Column<string>(type: "text", nullable: false),
+                    emailAddress = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,24 +31,24 @@ namespace dotnet_bakery.Migrations
                     breed = table.Column<int>(type: "integer", nullable: false),
                     color = table.Column<int>(type: "integer", nullable: false),
                     name = table.Column<string>(type: "text", nullable: false),
-                    petOwnerId = table.Column<int>(type: "integer", nullable: false),
-                    checkedInAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                    petOwnerid = table.Column<int>(type: "integer", nullable: false),
+                    checkedInAt = table.Column<DateTime>(type: "timestamp without time zone", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pets", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Pets_Owners_petOwnerId",
-                        column: x => x.petOwnerId,
+                        name: "FK_Pets_Owners_petOwnerid",
+                        column: x => x.petOwnerid,
                         principalTable: "Owners",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pets_petOwnerId",
+                name: "IX_Pets_petOwnerid",
                 table: "Pets",
-                column: "petOwnerId");
+                column: "petOwnerid");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -39,12 +39,12 @@ namespace dotnet_bakery.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("petOwnerId")
+                    b.Property<int>("petOwnerid")
                         .HasColumnType("integer");
 
                     b.HasKey("id");
 
-                    b.HasIndex("petOwnerId");
+                    b.HasIndex("petOwnerid");
 
                     b.ToTable("Pets");
                 });
@@ -73,7 +73,7 @@ namespace dotnet_bakery.Migrations
                 {
                     b.HasOne("pet_hotel.PetOwner", "petOwner")
                         .WithMany("pets")
-                        .HasForeignKey("petOwnerId")
+                        .HasForeignKey("petOwnerid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

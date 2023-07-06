@@ -33,11 +33,13 @@ namespace pet_hotel
 
         [Required]
         public string name { get; set; }
+        
+        // [ForeignKey("petOwnerid")]
+        public PetOwner petOwner { get; set; }
 
         [ForeignKey("Owners")]
-        public int petOwnerId { get; set; }
+        public int petOwnerid { get; set; }
 
-        public PetOwner petOwner { get; set; }
 
         public DateTime? checkedInAt { get; set; }
     }
