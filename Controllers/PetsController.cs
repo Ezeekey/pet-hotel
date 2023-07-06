@@ -79,5 +79,17 @@ namespace pet_hotel.Controllers
             Console.WriteLine("Owner object, {0}\n Owner id, {1}", theNewNewPet.petOwner, theNewNewPet.petOwnerid);
             return Created($"/api/pets/{newPet.id}", theNewNewPet);
         }
+
+        [HttpDelete("{PetId}")]
+        public IActionResult DeletePet(int PetId) {
+            Pet DeletionPet = _context.Pets.SingleOrDefault(pet => pet.id == PetId);
+
+            if (DeletionPet == null) {
+                return null;
+            }
+            _context.Pets.Remove(DeletionPet);
+            _context.SaveChanges();
+            return NoContent();
+        }
     }
 }
