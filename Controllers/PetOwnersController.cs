@@ -20,7 +20,7 @@ namespace pet_hotel.Controllers
         // occur when the route is missing in this controller
         [HttpGet]
         public ICollection<PetOwner> GetOwners() {
-            return _context.Owners.ToArray();
+            return _context.Owners.Include(pet => pet.pets).ToArray();
         }
 
         [HttpGet("{OwnerId}")]
