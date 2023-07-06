@@ -54,6 +54,20 @@ namespace pet_hotel.Controllers
             return Ok(CheckInPet);
         }
 
+        [HttpPut("{PetId}/checkout")]
+        public IActionResult CheckOutPet(int PetId) {
+            Pet CheckInPet = _context.Pets.SingleOrDefault(pet => pet.id == PetId);
+
+            if (CheckInPet == null) {
+                return NotFound();
+            }
+
+            CheckInPet.CheckOut();
+            _context.Pets.Update(CheckInPet);
+            _context.SaveChanges();
+            return Ok(CheckInPet);
+        }
+
         [HttpPost]
         public IActionResult CreatePet([FromBody] Pet newPet) {
             Pet theNewNewPet = newPet;

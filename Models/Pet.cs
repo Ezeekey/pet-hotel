@@ -46,5 +46,9 @@ namespace pet_hotel
         public void CheckIn() {
             checkedInAt = DateTime.Now;
         }
+
+        public void CheckOut() {
+            checkedInAt = null;
+        }
     }
 }
