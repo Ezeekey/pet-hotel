@@ -42,5 +42,9 @@ namespace pet_hotel
 
 
         public DateTime? checkedInAt { get; set; }
+
+        public void CheckIn() {
+            checkedInAt = DateTime.Now;
+        }
     }
 }
