@@ -70,7 +70,7 @@ namespace pet_hotel.Controllers
 
             if (DeletionOwner == null) return NotFound();
 
-            Transaction newTransaction = new Transaction($"Owner with id {DeletionOwner.id.ToString()} has been edited with\nvalues\n" +
+            Transaction newTransaction = new Transaction($"Owner with id {DeletionOwner.id.ToString()} has been deleted\nvalues\n" +
             $"name: {DeletionOwner.name}\n emailAddress: {DeletionOwner.emailAddress}\n");
 
             _context.Transactions.Add(newTransaction);
