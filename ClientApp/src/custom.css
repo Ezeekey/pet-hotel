@@ -3,6 +3,10 @@ a {
   color: #0366d6;
 }
 
+body {
+  animation: spin 4800s linear infinite;
+}
+
 code {
   color: #E01A76;
 }
@@ -11,4 +15,42 @@ code {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+}
+
+.christmas {
+  color: greenyellow;
+  background-color: red;
+
+  border-style: solid;
+  border-width: 5px;
+  border-color: aquamarine;
+
+  animation: rarara 3s ease-in-out infinite;
+}
+
+.pretty {
+  background-color: rgb(255, 0, 166);
+  color: whitesmoke;
+
+  text-shadow:  green 0px 0px 5px;
+}
+
+@keyframes rarara {
+  0% {
+    transform: rotate(0deg);
+  } 25% {
+    transform: rotate(10deg);
+  } 75% {
+    transform: rotate(-10deg);
+  } 100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  } 100% {
+    transform: rotate(360deg);
+  }
 }

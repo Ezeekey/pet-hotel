@@ -3,6 +3,7 @@ import PetsTable from './PetsTable';
 import PetOwnersTable from './PetOwnersTable';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import TraTable from './TraTable';
 
 class Home extends Component {
   static displayName = Home.name;
@@ -20,6 +21,7 @@ class Home extends Component {
         <PetsTable fetchPetOwners={this.fetchPetOwners} />
         <br />
         <PetOwnersTable fetchPetOwners={this.fetchPetOwners} />
+        <TraTable />
       </>
     );
   }
